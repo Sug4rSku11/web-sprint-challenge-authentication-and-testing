@@ -1,10 +1,9 @@
-const { JWT_SECRET } = require('../secrets/index')
-const jwt = require('jsonwebtoken')
+
 const User = require('../jokes/jokes-model')
 
 
-const checkUsernameExists = async (req, res, next){
-    try{
+const checkUsernameExists = async (req, res, next) => {
+   
         const [user] = await User.findBy({ username: req.body.username })
         if(user){
             req.user = user
@@ -12,9 +11,7 @@ const checkUsernameExists = async (req, res, next){
         } else {
             next({ status: 401, message: "invalid credentials"})
         }
-    } catch (err){
-        next(err)
-    }
+    
 }
 
 async function checkUsernameFree(req, res, next) {
@@ -28,4 +25,4 @@ async function checkUsernameFree(req, res, next) {
   }
 
   module.exports = { checkUsernameExists,
-                    checkUsernameFree,}
+                    checkUsernameFree,};
