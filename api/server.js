@@ -23,7 +23,7 @@ server.get('/', (req, res) => {
 })
 
 server.get('/auth/:id', (req, res) => {
-    Users.findBy()
+    Users.findById(req.params.id)
     .then(users => {
         res.status(200).json(users)
     })
