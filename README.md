@@ -54,8 +54,20 @@ Your finished project must include all of the following requirements (further in
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+    * Session based authentication will create a session for the user after the
+    * user logs in and a session id  will be stored on a cookie in the users browser.
+    * JSON web tokens are token based and the server creates a JWT with a secret
+    * and sends the JWT to the client which is stored and includes it in the header 
+    * with every request. The server validates teh JWT with every request.
+
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
     * Bcrypt helps with password hashing function, implements salting both manually
     * and automatically, and accumulative hashing rounds.
+
 3. How are unit tests different from integration and end-to-end testing?
+    * Unit tests are independent, focused and only test on unit of code. They focus 
+    * on one behavior or functionality.
+    
 4. How does _Test Driven Development_ change the way we write applications and tests?
+    * It helps us write clean code that works by writing tests before writing production
+    * code to fulfil the test and refactoring.
