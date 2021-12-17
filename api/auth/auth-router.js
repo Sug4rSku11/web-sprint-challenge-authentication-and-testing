@@ -3,9 +3,10 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../secrets/index')
 const User = require('../jokes/jokes-model')
-const { checkUsernameExists, checkUsernameFree } = require('./auth-middleware')
+const { checkUsernameExists, checkUsernameFree,
+  checkUsernamePasswordEntered } = require('./auth-middleware')
 
-router.post('/register', checkUsernameFree, (req, res, next) => {
+router.post('/register', checkUsernameFree, checkUsernamePasswordEntered, (req, res, next) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -40,7 +41,7 @@ router.post('/register', checkUsernameFree, (req, res, next) => {
  .catch(next)
 });
 
-router.post('/login', checkUsernameExists, (req, res, next) => {
+router.post('/login', checkUsernameExists, checkUsernamePasswordEntered, (req, res, next) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.

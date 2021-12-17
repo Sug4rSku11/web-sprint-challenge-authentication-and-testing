@@ -38,23 +38,5 @@ describe('Users Router', () => {
     })
   })
 
-})//users router
-
-describe('Users Model', () => {
-  describe('findById', () =>{
-    let result 
-    beforeAll(async ()=> {
-      result = await User.findById(1)
-    })
-    it('Can fetch one user from `users`', async () => {
-      expect(result).toHaveLength(1)
-    })
-  })
-  describe('insert', () => {
-    it('creates a new user in db', async () =>{
-      await User.insert({ username: 'Hulk', password: 0987 })
-      const [Hulk] = await db('users').where('id', 3)
-      expect(Hulk).toMatchObject({ id: 3, username: 'Hulk'})
-    })
-  })
 })
+

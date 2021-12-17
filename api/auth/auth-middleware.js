@@ -18,11 +18,19 @@ async function checkUsernameFree(req, res, next) {
     
       const users = await User.findBy({ username: req.body.username})
       if(users.length) {
-        next({status: 422, message: 'Username taken'})
+        next({status: 422, message: 'username taken'})
       } else {
         next()
       }
   }
 
+function checkUsernamePasswordEntered(req, res, next) {
+    const { username, password } = req.body
+    if(!username || !password) {
+        next({ status: 422, message: 'username and password required'})
+    }
+}
+
   module.exports = { checkUsernameExists,
-                    checkUsernameFree,};
+                    checkUsernameFree,
+                    checkUsernamePasswordEntered};
